@@ -28,19 +28,9 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/car_pose_recognition:latest
 
 
-      - 
-        name: Notify on failure
-        if: failure()
-        uses: softprops/action-gh-pages@v0.6.0
-        with:
-          branch: failure-email-notification
-          build_dir: "failure-email-notification"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          message: "Workflow failed"
-          pusher: ${{ github.actor }}
-          recipient_email: ${{ secrets.NOTIFICATION_EMAIL }}    
+         
 
     
