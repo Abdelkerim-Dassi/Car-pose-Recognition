@@ -28,7 +28,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/car_pose_recognition:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
 
 
       - 
