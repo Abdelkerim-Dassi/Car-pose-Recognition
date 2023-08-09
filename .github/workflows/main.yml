@@ -54,8 +54,8 @@ jobs:
           body: The License Plate recognition system build has failed. Please check the build logs.
           from: ${{ secrets.NOTIFICATION_EMAIL }}
           to: adelkerymdassi@gmail.com
-          attachments: |
-            build.log
+          #attachments: |
+            #build.log
             
 
       -
