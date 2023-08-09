@@ -38,12 +38,6 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/car_pose_recognition:latest
 
-      -
-        name: Save build log to a file
-        run: |
-          # Capture build output to a log file
-          docker build -t my_image . > build.log 2>&1 || true
-
 
 
       
@@ -66,11 +60,10 @@ jobs:
             - Workflow Run ID: ${{ github.run_id }}
             Please check the build logs for more details.
             
-            
           from: ${{ secrets.NOTIFICATION_EMAIL }}
           to: ${{ secrets.NOTIFICATION_EMAIL }} 
-          attachments: |
-            build.log
+          #attachments: |
+            #build.log
             
 
       -
