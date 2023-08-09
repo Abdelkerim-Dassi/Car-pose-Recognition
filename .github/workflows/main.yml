@@ -31,7 +31,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile
+          file: ./Dockerile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/car_pose_recognition:latest
 
@@ -50,7 +50,7 @@ jobs:
           subject: Workflow Build Failed
           body: The workflow build for the repository on GitHub has failed. Please check the workflow logs.
           from: ${{ secrets.EMAIL_USERNAME }}
-          to: ${{ secrets.EMAIL_NOTIFICATON }}
+          to: ${{ secrets.EMAIL_NOTIFICATION }}
           attachments: |
             build.log
             
@@ -64,7 +64,7 @@ jobs:
           server_port: 465
           username: ${{ secrets.NOTIFICATION_EMAIL }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: Workflow Build Failed Succeeded
+          subject: Workflow Build Succeeded
           body: |
             The workflow build for the repository on GitHub has successfully completed.
             Details:
