@@ -51,9 +51,14 @@ jobs:
           username: ${{ secrets.NOTIFICATION_EMAIL }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: License Plate Detection Build Failed
-          body: The License Plate recognition system build has failed. Please check the build logs.
+          body:  |
+            The workflow build has failed with the following error:
+            Error: ${{ job.status }}
+            Please check the build logs for more details.
+            Build log:
+            $(cat build.log)
           from: ${{ secrets.NOTIFICATION_EMAIL }}
-          to: abdelkerymdessi@gmail.com
+          to: ${{ secrets.NOTIFICATION_EMAIL }} 
           #attachments: |
             #build.log
             
