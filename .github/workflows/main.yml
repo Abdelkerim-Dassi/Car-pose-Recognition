@@ -64,7 +64,14 @@ jobs:
           server_port: 465
           username: ${{ secrets.NOTIFICATION_EMAIL }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: License Plate Detection Build Succeeded
-          body: The License Plate recognition system build has succeeded. You can proceed with deployment.
+          subject: Workflow Build Failed Succeeded
+          body: |
+            The workflow build for the repository on GitHub has successfully completed.
+            Details:
+            - Repository: ${{ github.repository }}
+            - Branch: ${{ github.ref }}
+            - Commit: ${{ github.sha }}
+            - Workflow Run ID: ${{ github.run_id }}
+            The build is successful, and you can proceed with any necessary deployment steps.
           from: ${{ secrets.NOTIFICATION_EMAIL }}
           to: ${{ secrets.NOTIFICATION_EMAIL }} 
