@@ -31,11 +31,13 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerile
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/car_pose_recognition:latest
 
 
+
+      
       -
         name: Send email on failure
         if: failure()
@@ -43,14 +45,15 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          username: ${{ secrets.NOTIFICATION_EMAIL }}
+          username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: License Plate Detection Build Failed
-          body: The License Plate recognition system build has failed. Please check the build logs.
-          from: ${{ secrets.NOTIFICATION_EMAIL }}
-          to: ${{ secrets.NOTIFICATION_EMAIL }} 
+          subject: Workflow Build Failed
+          body: The workflow build for the repository on GitHub has failed. Please check the workflow logs.
+          from: ${{ secrets.EMAIL_USERNAME }}
+          to: ${{ secrets.EMAIL_NOTIFICATION }}
           attachments: |
             build.log
+            
 
       -
         name: Send email on success
