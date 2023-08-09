@@ -37,6 +37,16 @@ jobs:
           file: ./Dockerile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/car_pose_recognition:latest
+          run: |
+           echo "Build completed"
+
+      -
+        name: Archive logs
+        uses: actions/upload-artifact@v2
+        with:
+          name: logs
+          path: |
+            build.log
 
 
 
@@ -53,6 +63,7 @@ jobs:
           subject: Workflow Build Failed
           body:  |
             The workflow build has failed .
+            [Logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}?check_suite_focus=true)
              Details:
             - Repository: ${{ github.repository }}
             - Branch: ${{ github.ref }}
