@@ -61,14 +61,14 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: Workflow Build Failed
           body:  |
-            The workflow build has failed .
-            [Logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}?check_suite_focus=true)
+            The workflow build has failed. Please check the job logs for more details.:
+            [Job Logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ github.job }})
              Details:
             - Repository: ${{ github.repository }}
             - Branch: ${{ github.ref }}
             - Commit: ${{ github.sha }}
             - Workflow Run ID: ${{ github.run_id }}
-            Please check the build logs for more details.
+            
             
           from: ${{ secrets.NOTIFICATION_EMAIL }}
           to: ${{ secrets.NOTIFICATION_EMAIL }} 
@@ -87,12 +87,15 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: Workflow Build Succeeded
           body: |
-            The workflow build for the repository on GitHub has successfully completed.
+            The workflow build has succeeded. Here is the link to the job logs:
+            [Job Logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ github.job }})
+
+            You can proceed with deployment.
             Details:
             - Repository: ${{ github.repository }}
             - Branch: ${{ github.ref }}
             - Commit: ${{ github.sha }}
             - Workflow Run ID: ${{ github.run_id }}
-            The build is successful, and you can proceed with any necessary deployment steps.
+           
           from: ${{ secrets.NOTIFICATION_EMAIL }}
           to: ${{ secrets.NOTIFICATION_EMAIL }} 
