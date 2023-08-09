@@ -62,7 +62,8 @@ jobs:
           subject: Workflow Build Failed
           body:  |
             The workflow build has failed. Please check the job logs for more details.:
-            [Job Logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ github.job }})
+            [Logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}?check_suite_focus=true)
+
              Details:
             - Repository: ${{ github.repository }}
             - Branch: ${{ github.ref }}
@@ -88,7 +89,7 @@ jobs:
           subject: Workflow Build Succeeded
           body: |
             The workflow build has succeeded. Here is the link to the job logs:
-            [Job Logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/job/${{ github.job }})
+            [Logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}?check_suite_focus=true)
 
             You can proceed with deployment.
             Details:
