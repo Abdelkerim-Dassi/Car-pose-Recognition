@@ -37,8 +37,7 @@ jobs:
           file: ./Dockerile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/car_pose_recognition:latest
-          run: |
-           echo "Build completed"
+          
 
       -
         name: Archive logs
