@@ -34,3 +34,34 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/car_pose_recognition:latest
+
+
+      -
+        name: Send email on failure
+        if: failure()
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.NOTIFICATION_EMAIL }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: License Plate Detection Build Failed
+          body: The License Plate recognition system build has failed. Please check the build logs.
+          from: ${{ secrets.NOTIFICATION_EMAIL }}
+          to: ${{ secrets.NOTIFICATION_EMAIL }} 
+          attachments: |
+            build.log
+
+      -
+        name: Send email on success
+        if: success()
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.NOTIFICATION_EMAIL }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: License Plate Detection Build Succeeded
+          body: The License Plate recognition system build has succeeded. You can proceed with deployment.
+          from: ${{ secrets.NOTIFICATION_EMAIL }}
+          to: ${{ secrets.NOTIFICATION_EMAIL }} 
