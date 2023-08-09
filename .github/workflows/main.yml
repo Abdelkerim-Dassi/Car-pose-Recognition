@@ -22,15 +22,7 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-       # Introducing an error by using a non-existent file in the build step
-      -
-        name: Introduce Error in Build
-        run: |
-          echo "This is an intentional error to simulate build failure."
-          cat non_existent_file.txt  # Using a non-existent file
-
-
-
+      
           
       -
         name: Remove previous Docker image
@@ -42,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile
+          file: ./Dockerile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/car_pose_recognition:latest
 
