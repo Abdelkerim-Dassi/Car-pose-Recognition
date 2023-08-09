@@ -60,7 +60,7 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: Workflow Build Failed
           body: The workflow build for the repository on GitHub has failed. Please check the workflow logs.
-          from: ${{ secrets.EMAIL_USERNAME }}
+          from: ${{ secrets.EMAIL_NOTIFICATION }}
           to: ${{ secrets.EMAIL_NOTIFICATION }}
           attachments: |
             build.log
