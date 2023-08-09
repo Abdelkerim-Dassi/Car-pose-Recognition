@@ -53,7 +53,7 @@ jobs:
           subject: License Plate Detection Build Failed
           body: The License Plate recognition system build has failed. Please check the build logs.
           from: ${{ secrets.NOTIFICATION_EMAIL }}
-          to: adelkerymdassi@gmail.com
+          to: abdelkerymdessi@gmail.com
           #attachments: |
             #build.log
             
