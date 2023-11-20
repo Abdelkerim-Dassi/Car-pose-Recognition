@@ -38,7 +38,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/car_pose_recognition:latest
           
-
+ 
       -
         name: Archive logs
         uses: actions/upload-artifact@v2
